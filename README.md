@@ -1,5 +1,9 @@
 # USB Power Tester based on ATtiny45/85
-Simple USB Power Tester based on ATtiny45/85 and INA 219. You can switch between different screens by pressing the SET button.
+Simple USB Power Tester based on ATtiny45/85 and INA219. You can switch between different screens by pressing the SET button.
+
+Project Video: https://youtu.be/QKx8Vn_IfjU
+
+Project at EasyEDA: https://easyeda.com/wagiminator/attiny85-usb-tester
 
 |Parameter|Value|
 |-|-|
