@@ -7,7 +7,7 @@
 # Type "make help" in the command line.
 
 # Input and Output File Names
-SKETCH  = USB_Tester_v1.2.ino
+SKETCH  = USB_Tester_v1.3.ino
 TARGET  = usb_tester
 
 # Microcontroller Options
