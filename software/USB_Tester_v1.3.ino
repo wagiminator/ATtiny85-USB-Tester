@@ -6,10 +6,10 @@
 // switch between different screens.
 //
 //                         +-\/-+
-// RESET --- A0 (D5) PB5  1|    |8  Vcc
-// SET ----- A3 (D3) PB3  2|    |7  PB2 (D2) A1 ---- OLED/INA (SCK)
+// RESET --- A0 (D5) PB5  1|°   |8  Vcc
+// SET ----- A3 (D3) PB3  2|    |7  PB2 (D2) A1 --- OLED/INA (SCK)
 //           A2 (D4) PB4  3|    |6  PB1 (D1) 
-//                   GND  4|    |5  PB0 (D0) ------- OLED/INA (SDA)
+//                   GND  4|    |5  PB0 (D0) ------ OLED/INA (SDA)
 //                         +----+
 //
 // Core:    ATtinyCore (https://github.com/SpenceKonde/ATTinyCore)
@@ -18,7 +18,9 @@
 // Clock:   8 MHz (internal)
 // Millis:  disabled
 // B.O.D.:  2.7V
-// Leave the rest on default settings. Don't forget to "Burn bootloader" !
+// Leave the rest on default settings. Don't forget to "Burn bootloader"!
+// No Arduino core functions or libraries are used. Use the makefile if 
+// you want to compile without Arduino IDE.
 //
 // The I²C OLED implementation is based on TinyOLEDdemo
 // https://github.com/wagiminator/ATtiny13-TinyOLEDdemo
@@ -29,8 +31,8 @@
 // License: http://creativecommons.org/licenses/by-sa/3.0/
 
 
-// oscillator calibration value (uncomment and set if necessary)
-//#define OSCCAL_VAL  0x48
+// Oscillator calibration value (uncomment and set if necessary)
+// #define OSCCAL_VAL  0x48
 
 // Libraries
 #include <avr/io.h>
@@ -396,20 +398,20 @@ int main(void) {
   // Loop
   while(1) {
     // Read sensor values
-    voltage = INA_readVoltage();                // read voltage from INA219
-    current = INA_readCurrent();                // read current from INA219  
-    power = (uint32_t)voltage * current / 1000; // calculate power in mW
+    voltage = INA_readVoltage();                // read voltage in mV from INA219
+    current = INA_readCurrent();                // read current in mA from INA219  
 
     // Calculate timings
     nowmillis   = MIL_read();                   // read millis counter
-    interval    = nowmillis - lastmillis;       // calculate time interval
+    interval    = nowmillis - lastmillis;       // calculate recent time interval
     lastmillis  = nowmillis;                    // reset lastmillis
     duration   += interval;                     // calculate total duration in millis
     seconds     = duration / 1000;              // calculate total duration in seconds
   
-    // Calculate capacity in uAh and energy in uWh
-    capacity += interval * current / 3600;      // calculate uAh
-    energy   += interval * power   / 3600;      // calculate uWh
+    // Calculate power, capacity and energy
+    power = (uint32_t)voltage * current / 1000; // calculate power    in mW
+    capacity += interval * current / 3600;      // calculate capacity in uAh
+    energy   += interval * power   / 3600;      // calculate energy   in uWh
 
     // Update min/max values
     if (minvoltage > voltage) minvoltage = voltage;
@@ -447,7 +449,7 @@ int main(void) {
                 OLED_printDec16(minpower);   OLED_printPrg(SEP);
                 OLED_printDec16(maxpower);   OLED_printPrg(mW);
                 break;
-      case 3:   // ATtiny25 without decimal places to fit into the flash
+      case 3:   // ATtiny25 without decimal places to make it fit into the flash
                 #if defined(__AVR_ATtiny25__)
                   OLED_setCursor(32,0);
                   OLED_printDec16(capacity / 1000); OLED_printPrg(mAh);
