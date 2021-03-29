@@ -22,6 +22,9 @@
 // No Arduino core functions or libraries are used. Use the makefile if 
 // you want to compile without Arduino IDE.
 //
+// Note: The internal oscillator may need to be calibrated for precise
+//       energy and capacity calculation.
+//
 // The I²C OLED implementation is based on TinyOLEDdemo
 // https://github.com/wagiminator/ATtiny13-TinyOLEDdemo
 //
@@ -281,7 +284,7 @@ void OLED_printDec8(uint8_t value) {
 
 // INA219 register values
 #define INA_ADDR        0x80                // I2C write address of INA219
-#define INA_CONFIG      0b0000011001100111  // INA config register according to datasheet
+#define INA_CONFIG      0b0000011111111111  // INA config register according to datasheet
 #define INA_CALIB       5120                // INA calibration register according to R_SHUNT
 #define INA_REG_CONFIG  0x00                // INA configuration register address
 #define INA_REG_CALIB   0x05                // INA calibration register address
