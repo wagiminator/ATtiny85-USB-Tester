@@ -2,7 +2,7 @@
 Simple USB Power Tester based on ATtiny25/45/85 and INA219. The device measures voltage, current, power, energy, capacity and displays the values on an OLED screen. You can switch between different screens by pressing the SET button.
 
 - Project Video (YouTube): https://youtu.be/QKx8Vn_IfjU
-- Project Files (EasyEDA): https://easyeda.com/wagiminator/attiny85-usb-tester
+- Design Files (EasyEDA): https://easyeda.com/wagiminator/attiny85-usb-tester
 
 ![pic6.jpg](https://raw.githubusercontent.com/wagiminator/ATtiny85-USB-Tester/master/documentation/USB_Tester_pic6.jpg)
 
