@@ -1,4 +1,4 @@
-# USB Power Tester based on ATtiny25/45/85
+# USB Power Tester
 Simple USB Power Tester based on ATtiny25/45/85 and INA219. The device measures voltage, current, power, energy, capacity and displays the values on an OLED screen. You can switch between different screens by pressing the SET button.
 
 - Project Video (YouTube): https://youtu.be/QKx8Vn_IfjU
@@ -14,7 +14,7 @@ The device is equipped with a USB-A plug for the input and a USB-A socket for th
 An [INA219](https://www.ti.com/lit/ds/symlink/ina219.pdf) is used to measure voltage and current. The INA219 is a current shunt and power monitor with an I²C-compatible interface. The device monitors both shunt voltage drop and bus supply voltage, with programmable conversion times and filtering. A programmable calibration value, combined with an internal multiplier, enables direct readouts of current in amperes. The selected shunt resistance of 8mΩ enables both a very small influence on the circuit and a measurement with a resolution of 1mA. For an accurate measurement, a shunt resistor with a low tolerance (1% or better) should be selected.
 
 ## User Interface
-The user interface utilizes two buttons and a [128x64 pixels OLED display](http://aliexpress.com/wholesale?SearchText=128+64+0.96+oled+new+4pin). An [ATtiny24/45/85](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-2586-AVR-8-bit-Microcontroller-ATtiny25-ATtiny45-ATtiny85_Datasheet.pdf) microcontroller handles the user interface as well as the calculation and  display of the values.
+The user interface utilizes two buttons and an [SSD1306 128x32 pixels OLED display](http://aliexpress.com/wholesale?SearchText=128+32+0.91+oled). An [ATtiny24/45/85](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-2586-AVR-8-bit-Microcontroller-ATtiny25-ATtiny45-ATtiny85_Datasheet.pdf) microcontroller handles the user interface as well as the calculation and  display of the values.
 
 ![pic3.jpg](https://raw.githubusercontent.com/wagiminator/ATtiny85-USB-Tester/master/documentation/USB_Tester_pic3.jpg)
 ![pic4.jpg](https://raw.githubusercontent.com/wagiminator/ATtiny85-USB-Tester/master/documentation/USB_Tester_pic4.jpg)
@@ -80,10 +80,11 @@ Since there is no ICSP header on the board, you have to program the ATtiny eithe
 |Current Measurement Resolution|1mA|
 
 # References, Links and Notes
-1. [UBS-C Version](https://github.com/wagiminator/ATtiny85-USB-C-Tester)
+1. [UBS Type-C Version](https://github.com/wagiminator/ATtiny85-USB-C-Tester)
 2. [ATtiny25/45/85 Datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-2586-AVR-8-bit-Microcontroller-ATtiny25-ATtiny45-ATtiny85_Datasheet.pdf)
 3. [INA219 Datasheet](https://www.ti.com/lit/ds/symlink/ina219.pdf)
 4. [SSD1306 Datasheet](https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf)
+5. [128x32 OLED on Aliexpress](http://aliexpress.com/wholesale?SearchText=128+32+0.91+oled)
 
 ![pic5.jpg](https://raw.githubusercontent.com/wagiminator/ATtiny85-USB-Tester/master/documentation/USB_Tester_pic5.jpg)
 
